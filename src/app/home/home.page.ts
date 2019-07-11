@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
 import { ToastController } from '@ionic/angular';
+import * as io from 'socket.io-client';
+import { Router } from '@angular/router';
+import { SuppliesService } from '../supplies/supplies.service';
 
 @Component({
   selector: 'app-home',
@@ -9,8 +12,12 @@ import { ToastController } from '@ionic/angular';
 })
 export class HomePage {
 
+  nickname;
+
   constructor(private geolocation: Geolocation,
-    public toastController: ToastController) { }
+    public toastController: ToastController,
+    private router: Router,
+    private suppliesService : SuppliesService) { }
 
   async presentToast(lat, lon) {
     const toast = await this.toastController.create({
@@ -33,6 +40,12 @@ export class HomePage {
       console.log('Error getting location', error);
     });
 
+  }
+
+
+  joinChat() {
+    this.suppliesService.setNickname(this.nickname);
+    this.router.navigateByUrl('/supplies');
   }
 
 }
