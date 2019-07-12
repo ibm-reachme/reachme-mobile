@@ -3,6 +3,7 @@ import * as io from 'socket.io-client';
 import { Observable } from 'rxjs';
 import { ToastController } from '@ionic/angular';
 import { SuppliesService } from './supplies.service';
+import { Storage } from '@ionic/storage';
 
 @Component({
   selector: 'app-supplies',
@@ -17,16 +18,22 @@ export class SuppliesPage implements OnInit {
   message = '';
 
   constructor(private toastCtrl: ToastController,
-    private suppliesService : SuppliesService) {
+    private storage: Storage) {
+  }
+
+  ngOnInit() {
+
+    this.storage.get('name').then(val => {
+      this.nickname = val;
+      console.log("got data from storage",val);
+      
+    });
 
     this.socket = io('http://localhost:3000');
 
     this.socket.connect();
 
-    
-    this.socket.emit('set-nickname', this.suppliesService.getNickname());
-
-    this.nickname = 'sandesh';
+    this.socket.emit('set-nickname', this.nickname);
 
     this.getMessages().subscribe(message => {
       this.messages.push(message);
@@ -40,10 +47,6 @@ export class SuppliesPage implements OnInit {
         this.showToast('User joined: ' + user);
       }
     });
-
-  }
-
-  ngOnInit() {
   }
 
 
@@ -73,7 +76,7 @@ export class SuppliesPage implements OnInit {
   ionViewWillLeave() {
     this.socket.disconnect();
   }
-  
+
   async showToast(msg) {
     const toast = await this.toastCtrl.create({
       message: msg,

@@ -7,5 +7,19 @@
 
 
 <ion-content>
-
+  <ion-row class="message_row">
+    <ion-col col-10>
+      <ion-item no-lines>
+        <ion-input type="text" placeholder="Name" [(ngModel)]="name"></ion-input>
+      </ion-item>
+       
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col col-2>
+      <ion-button clear color="primary" (click)="saveName()" [disabled]="name === ''">
+        Save
+      </ion-button>
+    </ion-col>
+  </ion-row>
 </ion-content>
