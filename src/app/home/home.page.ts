@@ -17,7 +17,8 @@ export class HomePage {
   constructor(private geolocation: Geolocation,
     public toastController: ToastController,
     private router: Router,
-    private suppliesService : SuppliesService) { }
+    private suppliesService : SuppliesService,
+    private route: Router) { }
 
  
   showLocation() {
@@ -43,7 +44,10 @@ export class HomePage {
     toast.present();
   }
 
+  subscribeToUpdates(){
+    this.route.navigateByUrl('/updates');
 
+  }
 
   joinChat() {
     this.suppliesService.setNickname(this.nickname);
