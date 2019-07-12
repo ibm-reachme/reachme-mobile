@@ -19,14 +19,7 @@ export class HomePage {
     private router: Router,
     private suppliesService : SuppliesService) { }
 
-  async presentToast(lat, lon) {
-    const toast = await this.toastController.create({
-      message: 'Latitude: ' + lat + ' Longitude: ' + lon,
-      duration: 2000
-    });
-    toast.present();
-  }
-
+ 
   showLocation() {
     console.log("Show location");
 
@@ -41,6 +34,15 @@ export class HomePage {
     });
 
   }
+
+  async presentToast(lat, lon) {
+    const toast = await this.toastController.create({
+      message: 'Sending your location... Latitude: ' + lat + ' Longitude: ' + lon,
+      duration: 2000
+    });
+    toast.present();
+  }
+
 
 
   joinChat() {

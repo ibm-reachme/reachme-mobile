@@ -11,35 +11,46 @@
 
 <ion-content>
   <ion-card class="welcome-card">
-    <ion-img src="/assets/shapes.svg"></ion-img>
+    <ion-img src="/assets/life-pixabay.jpg"></ion-img>
     <ion-card-header>
       <ion-card-subtitle>Get Started</ion-card-subtitle>
-      <ion-card-title>Welcome to Ionic</ion-card-title>
+      <ion-card-title>Welcome to Reach Me</ion-card-title>
     </ion-card-header>
     <ion-card-content>
-      <p>Now that your app has been created, you'll want to start building out features and components. Check out some
-        of the resources below for next steps.</p>
+      <p>You can use the app to ask for help during emergency, for supplies and updates
+        when you are stuck in any natural disaster
+
+        Your location would be sent to our centralized team who can dispatch emergency response
+        or provide you location for nearest supplies or any updates that
+      </p>
+
+      <p> Scroll below to select one of the options</p>
+
+      <p>This is a demo app. Please do not use this in case of actual emergency.</p>
+
+      <p>
+        Image by <a
+          href="https://pixabay.com/users/stanvpetersen-1870062/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=2260391">Stan
+          Petersen</a> from <a
+          href="https://pixabay.com/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=2260391">Pixabay</a>
+      </p>
     </ion-card-content>
   </ion-card>
-  <ion-list lines="none">
-    <ion-list-header>
-      <ion-label>Resources</ion-label>
-    </ion-list-header>
-    <ion-item>
-      <ion-icon slot="start" color="medium" name="pin"></ion-icon>
-      <ion-label (click)="showLocation()">GPS location</ion-label>
-    </ion-item>
 
+  <ion-list lines="none">
+    <ion-button padding color="danger" expand="block" (click)="showLocation()">Emergency Rescue</ion-button>
+    <ion-button padding expand="block" (click)="joinChat()">Ask for supplies</ion-button>
+    <ion-button padding expand="block">Subscribe to updates</ion-button>
   </ion-list>
 
 
 
-  <ion-content padding>
+  <!-- <ion-content padding>
     <ion-item>
       <ion-label stacked>Set Nickname</ion-label>
       <ion-input type="text" [(ngModel)]="nickname" placeholder="Nickname"></ion-input>
     </ion-item>
     <ion-button full (click)="joinChat()" [disabled]="nickname === ''">Join Chat as {{ nickname }}</ion-button>
-  </ion-content>
+  </ion-content> -->
 
 </ion-content>
