@@ -41,11 +41,11 @@ export class SuppliesPage implements OnInit {
 
     this.getUsers().subscribe(data => {
       let user = data['user'];
-      if (data['event'] === 'left') {
+      /* if (data['event'] === 'left') {
         this.showToast('User left: ' + user);
       } else {
         this.showToast('User joined: ' + user);
-      }
+      } */
     });
   }
 

@@ -13,7 +13,8 @@ const routes: Routes = [
   },
   { path: 'supplies', loadChildren: './supplies/supplies.module#SuppliesPageModule' },
   { path: 'profile', loadChildren: './profile/profile.module#ProfilePageModule' },
-  { path: 'updates', loadChildren: './updates/updates.module#UpdatesPageModule' }
+  { path: 'updates', loadChildren: './updates/updates.module#UpdatesPageModule' },
+  { path: 'emergency', loadChildren: './emergency/emergency.module#EmergencyPageModule' }
 ];
 
 @NgModule({
