@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-back-button defaultHref="/home" slot="start"></ion-back-button>
+    <ion-title>Admin</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-card>
+
+    <ion-card-header>
+      <ion-card-subtitle>Current situation</ion-card-subtitle>
+      <ion-card-title>Emergency Cases</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      <ion-grid>
+        <ion-row>
+          <ion-col class="ion-col-header">Username</ion-col>
+          <ion-col class="ion-col-header">Latitude</ion-col>
+          <ion-col class="ion-col-header"> Longitude</ion-col>
+        </ion-row>
+        <ion-row *ngFor="let profile of profiles">
+          <ion-col>{{profile.name}}</ion-col>
+          <ion-col>{{profile.latitude}}</ion-col>
+          <ion-col>{{profile.longitude}}</ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>

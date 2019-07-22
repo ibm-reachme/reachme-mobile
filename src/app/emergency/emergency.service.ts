@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Profile } from '../profile/profile';
+import { Observable } from 'rxjs';
 
 
 @Injectable({
@@ -14,8 +15,8 @@ export class EmergencyService {
   private saveUserUrl = 'http://localhost:3000/user';
 
 
-  public getUsers() {
-    return this.http.get(this.getUserUrl);
+  public getUsers() :Observable<Profile[]>{
+    return this.http.get<Profile[]>(this.getUserUrl);
   }
 
   public saveUser(profile: Profile) {
