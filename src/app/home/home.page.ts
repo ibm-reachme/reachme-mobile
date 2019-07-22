@@ -13,7 +13,6 @@ export class HomePage {
   constructor(
    
     private router: Router,
-    private suppliesService : SuppliesService,
     private route: Router) { }
 
   subscribeToUpdates(){

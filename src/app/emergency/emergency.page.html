@@ -24,9 +24,24 @@
     </ion-item>
 
     <ion-item lines="none">
-      <ion-button fill="outline" slot="end" (click)="sendLocation()">Confirm emergency</ion-button>
+      <ion-button fill="outline" slot="end" (click)="confirmEmergency()">Confirm emergency</ion-button>
     </ion-item>
   </ion-card>
 
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Rescue Status</ion-card-title>
+    </ion-card-header>
+
+    <ion-item lines="none">
+      <ion-label>{{status}}</ion-label>
+    </ion-item>
+
+
+    <ion-card-content>
+       
+    </ion-card-content>
+  </ion-card>
 
 </ion-content>

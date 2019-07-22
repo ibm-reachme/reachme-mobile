@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
 import { ToastController } from '@ionic/angular';
+import { EmergencyService } from './emergency.service';
+import { Profile } from '../profile/profile';
+import { Storage } from '@ionic/storage';
 
 @Component({
   selector: 'app-emergency',
@@ -10,35 +13,48 @@ import { ToastController } from '@ionic/angular';
 export class EmergencyPage implements OnInit {
 
   constructor(private geolocation: Geolocation,
-    public toastController: ToastController) { }
+    public toastController: ToastController,
+    private emergencyService: EmergencyService,
+    private storage: Storage) { }
 
   latitude;
   longitude;
+  username;
+
+  status = "Click on the button to register an emergency case";
 
   ngOnInit() {
-    this.showLocation();
+    this.getLocation();
+
+    this.storage.get('name').then(val => {
+      this.username = val;
+    });
   }
 
-  showLocation() {
-    console.log("Show location");
-
+  getLocation() {
     this.geolocation.getCurrentPosition().then((resp) => {
-      console.log("Latitude: " + resp.coords.latitude);
-      console.log("Longitude: " + resp.coords.longitude);
 
       this.latitude = resp.coords.latitude;
       this.longitude = resp.coords.longitude;
-
-      //this.presentToast(resp.coords.latitude, resp.coords.longitude);
 
     }).catch((error) => {
       console.log('Error getting location', error);
     });
 
-  } 
+  }
 
-  sendLocation(){
-    this.presentToast(this.latitude,this.longitude);
+  confirmEmergency() {
+
+    //this.emergencyService.getUsers().subscribe(data => console.log(data));
+    let profile = new Profile();
+    profile.name = this.username;
+    profile.latitude = this.latitude;
+    profile.longitude  = this.longitude;
+
+    this.emergencyService.saveUser(profile);
+    
+    this.status = "Your request has been registered with us";
+    //this.presentToast(this.latitude, this.longitude);
   }
 
   async presentToast(lat, lon) {
