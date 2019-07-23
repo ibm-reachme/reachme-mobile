@@ -11,8 +11,13 @@ export class EmergencyService {
 
   constructor(private http: HttpClient) { }
 
+  /*
   private getUserUrl = 'http://localhost:3000/user';
   private saveUserUrl = 'http://localhost:3000/user';
+  */
+
+  private getUserUrl = 'https://ibm-reachme-backend.herokuapp.com/user';
+  private saveUserUrl = 'https://ibm-reachme-backend.herokuapp.com/user';
 
 
   public getUsers() :Observable<Profile[]>{

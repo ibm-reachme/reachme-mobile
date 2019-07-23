@@ -29,7 +29,11 @@ export class SuppliesPage implements OnInit {
       
     });
 
-    this.socket = io('http://localhost:3000');
+    //Locally hosted nodejs server
+    //this.socket = io('http://localhost:3000');
+    
+    // Heroku deployed backend
+    this.socket = io('https://ibm-reachme-backend.herokuapp.com');
 
     this.socket.connect();
 
