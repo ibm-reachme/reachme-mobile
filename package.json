@@ -3,6 +3,10 @@
   "version": "0.0.1",
   "author": "Ionic Framework",
   "homepage": "https://ionicframework.com/",
+  "engines": {
+    "node": "10.16.0",
+    "npm": "6.10.0"
+  },
   "scripts": {
     "ng": "ng",
     "start": "node server.js",
@@ -83,10 +87,6 @@
       "cordova-plugin-ionic-keyboard": {},
       "cordova-plugin-geolocation": {},
       "cordova-sqlite-storage": {}
-    },
-    "engines": {
-      "node": "10.16.0",
-      "npm": "6.10.0"
     },
     "platforms": [
       "android"
