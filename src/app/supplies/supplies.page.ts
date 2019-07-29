@@ -23,11 +23,7 @@ export class SuppliesPage implements OnInit {
 
   ngOnInit() {
 
-    this.storage.get('name').then(val => {
-      this.nickname = val;
-      console.log("got data from storage",val);
-      
-    });
+  
 
     //Locally hosted nodejs server
     //this.socket = io('http://localhost:3000');
@@ -37,8 +33,12 @@ export class SuppliesPage implements OnInit {
 
     this.socket.connect();
 
-    this.socket.emit('set-nickname', this.nickname);
-
+    this.storage.get('name').then(val => {
+      this.nickname = val;
+      console.log("got data from storage",val);
+      this.socket.emit('set-nickname', this.nickname);  
+    });
+    
     this.getMessages().subscribe(message => {
       this.messages.push(message);
     });
